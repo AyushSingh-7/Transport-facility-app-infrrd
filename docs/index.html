@@ -4,11 +4,29 @@
   <base href="/Transport-facility-app-infrrd/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="assets/car-svgrepo-com.svg">
+  <script type="text/javascript">
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // This script checks to see if a redirect is present in the query string,
+    // converts it back into the correct url and adds it to the
+    // browser's history using window.history.replaceState(...),
+    // which won't cause the browser to attempt to load the new url.
+    (function(l) {
+      if (l.search[1] === '/' ) {
+        var decoded = l.search.slice(1).split('&').map(function(s) { 
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
 <link rel="stylesheet" href="styles.de2d3353b2958063.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.de2d3353b2958063.css"></noscript></head>
 
 <body>
   <app-root></app-root>
-<script src="runtime.86f90d1257445350.js" type="module"></script><script src="polyfills.7bfb869d5cb7d0b6.js" type="module"></script><script src="main.89611955cc0993c6.js" type="module"></script>
+<script src="runtime.86f90d1257445350.js" type="module"></script><script src="polyfills.7bfb869d5cb7d0b6.js" type="module"></script><script src="main.c9a2f897cee1269f.js" type="module"></script>
 
 
 </body></html>
