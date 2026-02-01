@@ -218,27 +218,6 @@ ng build --output-path docs --base-href /Transport-facility-app-infrrd/
 
 ---
 
-## 📝 Development Commands
-
-```bash
-# Development server
-ng serve
-
-# Build
-ng build
-
-# Run unit tests
-ng test
-
-# Lint
-ng lint
-
-# Generate component
-ng generate component component-name
-```
-
----
-
 ## 👨‍💻 Author
 
 **Ayush Singh**
