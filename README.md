@@ -37,11 +37,7 @@ Transport Facility App is an internal ride-sharing platform designed for organiz
 
 Check out the app in action! Watch the complete walkthrough of all features:
 
-<video width="100%" controls>
-  <source src="src/assets/demo-vide.mp4" type="video">
-  Your browser does not support the video tag.
-</video>
-
+https://github.com/user-attachments/assets/1f3d168d-3750-479a-87f9-f1473ec71f15
 
 **Demo includes:**
 
