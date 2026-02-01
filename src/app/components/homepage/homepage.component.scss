@@ -9,13 +9,17 @@ $light-cyan: #d4f1ed;
 $light-pink: #f0e8f0;
 .homepage-container {
   width: 100%;
+  overflow-y: none;
   min-height: 100vh;
   background: linear-gradient(135deg, #f5fffe 0%, #f0f8f6 100%);
-  padding: 40px 20px;
+  padding: 40px 20px 40px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  .secondary-action-container {
+    margin-left: -40px;
+  }
 }
 
 .homepage-content-wrapper {
@@ -330,7 +334,7 @@ $light-pink: #f0e8f0;
     padding: 30px 16px;
   }
   .homepage-content-wrapper {
-    flex-direction: column;
+    display: contents;
     gap: 20px;
     margin-bottom: 40px;
   }
@@ -361,15 +365,20 @@ $light-pink: #f0e8f0;
   }
   .navigation-section {
     gap: 12px;
+    margin-bottom: 24px;
   }
   .nav-button {
     padding: 10px 20px;
     font-size: 13px;
   }
+  .modal-overlay-inside {
+    min-width: 0 !important;
+  }
 }
 
 @media (max-width: 480px) {
   .homepage-container {
+    margin-bottom: 24px;
     padding: 20px 12px;
   }
   .icon-container {
@@ -421,6 +430,9 @@ $light-pink: #f0e8f0;
     right: 20px;
     width: 50px;
     height: 50px;
+  }
+  .modal-overlay-inside {
+    min-width: 0 !important;
   }
 }
 

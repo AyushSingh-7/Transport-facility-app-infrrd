@@ -1,8 +1,7 @@
 export const PICKUP_POINTS = [
-  'Bengaluru Airport (KIA)',
-  'Bus Station (Majestic)',
-  'Railway Station YPR',
-  'Railway Station BLR',
+  'Bengaluru Airport',
+  'Bus Station',
+  'Railway Station',
   'Indiranagar',
   'Koramangala',
   'Whitefield',
@@ -27,10 +26,9 @@ export const PICKUP_POINTS = [
 ];
 
 export const DESTINATIONS = [
-  'Bengaluru Airport (KIA)',
-  'Bus Station (Majestic)',
-  'Railway Station YPR',
-  'Railway Station BLR',
+  'Bengaluru Airport',
+  'Bus Station',
+  'Railway Station',
   'Indiranagar',
   'Koramangala',
   'Whitefield',
@@ -46,10 +44,10 @@ export const DESTINATIONS = [
   'Yelahanka',
   'Ramamurthy Nagar',
   'Gottigere',
-  'Bannerghatta Road',
+  'Bannerghatta RD',
   'Jayanagar',
   'Basavanagudi',
-  'Silk Board Junction',
+  'Silk Board',
   'Trinity Junction',
   'Vijayanagar'
 ];

@@ -48,9 +48,8 @@
           <div class="ride-footer">
             <span class="ride-type" [class.type-offered]="ride.type === 'offered'" [class.type-booked]="ride.type === 'booked'" [innerText]="getRideTypeLabel(ride)"></span>
             <span *ngIf="ride.type === 'booked'">
-              <span class="booked-by" [innerHTML]="'Offered by:'">
-                <span class="badge" [innerText]="ride.offerBy"></span>
-              </span>
+              <span class="booked-by" [innerText]="'Offered by : '"></span>
+              <span [innerText]="ride.offerBy || '-'"></span>
             </span>
           </div>
         </div>

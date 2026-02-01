@@ -31,7 +31,7 @@ $error-color: #ff6b6b;
       color: $text-dark;
       margin: 0;
     }
-    .close-btn {
+    .modal-close-btn {
       background: none;
       border: none;
       cursor: pointer;
@@ -428,7 +428,7 @@ $error-color: #ff6b6b;
       h2 {
         font-size: 18px;
       }
-      .close-btn {
+      .modal-close-btn {
         .material-icons {
           font-size: 20px !important;
         }
