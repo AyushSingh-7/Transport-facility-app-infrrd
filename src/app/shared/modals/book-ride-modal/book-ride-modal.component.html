@@ -1,0 +1,76 @@
+<div class="modal-content" (click)="$event.stopPropagation()">
+  <div class="modal-header">
+    <h2 [innerText]="'Book This Ride'"></h2>
+    <button class="close-btn" (click)="onClose()">
+      <span class="material-icons">close</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <!-- Ride Summary Section -->
+    <div class="ride-summary">
+      <!-- Vehicle Icon -->
+      <div class="vehicle-icon">
+        <span class="material-icons" [ngClass]="'icon-' + ride.vehicleType">
+          {{ ride.vehicleType === 'bike' ? 'two_wheeler' : 'directions_car' }}
+        </span>
+      </div>
+
+      <!-- Route -->
+      <h3 class="route" [innerText]="ride.from + ' → ' + ride.to"></h3>
+
+      <!-- Time -->
+      <div class="time-display">
+        <span class="time" [innerText]="ride.departureTime"></span>
+        <span class="period" [innerText]="ride.departureTime.includes('AM') ? 'AM' : 'PM'"></span>
+      </div>
+
+      <!-- Ride Info -->
+      <div class="ride-info">
+        <span class="offered-by">
+          <span class="material-icons">person</span>
+          <span [innerText]="'by ' + ride.offerBy"></span>
+        </span>
+        <div class="availability-dots">
+          <span class="material-icons seats-icon">event_seat</span>
+          <span class="dot" *ngFor="let seat of totalSeats" [class.available]="seat <= ride.availableSeats"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Booking Form -->
+    <form [formGroup]="bookRideForm" (ngSubmit)="onSubmit()">
+      <!-- Employee ID Input -->
+      <div class="form-group">
+        <label class="form-label" [innerText]="'Enter Your Employee ID'">
+          <span class="material-icons">person</span>
+        </label>
+        <input type="text" class="form-input" placeholder="EMP001" formControlName="employeeId" [class.input-error]="isFieldInvalid('employeeId')"
+          (input)="onEmployeeIdChange()" />
+        <span class="error-message" *ngIf="isFieldInvalid('employeeId')" [innerText]="getErrorMessage('employeeId')"></span>
+      </div>
+
+      <!-- Validation Messages -->
+      <div class="validation-messages">
+        <p class="validation-text">
+          <span class="material-icons">info</span>
+          Same employee cannot book twice • Cannot book your own ride
+        </p>
+      </div>
+
+      <!-- Booking Error -->
+      <div *ngIf="bookingError" class="booking-error">
+        <span class="material-icons">error</span>
+        <span [innerText]="bookingError"></span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="onClose()" [innerText]="'Cancel'">
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="bookRideForm.invalid" [innerText]="'Confirm Booking'">
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="booking-result-overlay" [class.show]="isVisible" (click)="onClose()">
+  <div class="booking-result-modal" [class.show]="isVisible" (click)="$event.stopPropagation()">
+    <div class="icon-container" [ngClass]="getIconClass()">
+      <span class="material-icons icon">{{ getIcon() }}</span>
+    </div>
+    <h2 class="modal-title" [innerText]="getTitle()"></h2>
+    <p class="modal-message" [innerText]="message || getDefaultMessage()"></p>
+    <div *ngIf="rideDetails" class="ride-details-box">
+      <div class="detail-row">
+        <span class="detail-label" [innerText]="'Route:'"></span>
+        <span class="detail-value" [innerText]="rideDetails.from + ' → ' + rideDetails.to"></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label" [innerText]="'Time:'"></span>
+        <span class="detail-value" [innerText]="rideDetails.departureTime"></span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label" [innerText]="'Offered by:'"></span>
+        <span class="detail-value" [innerText]="rideDetails.offerBy"></span>
+      </div>
+    </div>
+    <button class="close-btn" (click)="onClose()">
+      <span [innerText]="status === 'success' ? 'Continue' : 'Retry'"></span>
+    </button>
+  </div>
+</div>

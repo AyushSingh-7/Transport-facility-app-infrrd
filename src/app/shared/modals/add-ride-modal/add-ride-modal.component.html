@@ -1,0 +1,121 @@
+<div class="modal-content" (click)="$event.stopPropagation()">
+  <div class="modal-header">
+    <h2 [innerText]="'Offer a Ride'"></h2>
+    <button class="close-btn" (click)="onClose()">
+      <span class="material-icons">close</span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="addRideForm" (ngSubmit)="onSubmit()">
+      <!-- Employee ID -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="material-icons">person</span>
+          <span [innerText]="'Your Employee ID'"></span>
+          <span class="required">*</span>
+        </label>
+        <input type="text" class="form-input" placeholder="EMP001" formControlName="employeeId" [class.input-error]="isFieldInvalid('employeeId')"
+        />
+        <span class="error-message" *ngIf="isFieldInvalid('employeeId')" [innerText]="getErrorMessage('employeeId')"></span>
+      </div>
+
+      <!-- Vehicle Type Selection -->
+      <div class="form-group">
+        <label class="form-label">
+          <span [innerText]="'Vehicle Type'"></span>
+          <span class="required">*</span>
+        </label>
+        <div class="vehicle-options">
+          <button type="button" class="vehicle-btn" [class.selected]="addRideForm.get('vehicleType')?.value === 'bike'" (click)="selectVehicleType('bike')">
+            <span class="material-icons">two_wheeler</span>
+            <span [innerText]="'Bike'"></span>
+          </button>
+          <button type="button" class="vehicle-btn" [class.selected]="addRideForm.get('vehicleType')?.value === 'car'" (click)="selectVehicleType('car')">
+            <span class="material-icons">directions_car</span>
+            <span [innerText]="'Car'"></span>
+          </button>
+        </div>
+        <span class="error-message" *ngIf="isFieldInvalid('vehicleType')" [innerText]="getErrorMessage('vehicleType')"></span>
+      </div>
+
+      <!-- Vehicle Number -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="material-icons">tag</span>
+          <span [innerText]="'Vehicle Number'"></span>
+          <span class="required">*</span>
+        </label>
+        <input type="text" class="form-input" placeholder="e.g., MH12AB1234, DL12EV1234, 23BH1234AB" formControlName="vehicleNumber"
+          [class.input-error]="isFieldInvalid('vehicleNumber')" />
+        <span class="error-message" *ngIf="isFieldInvalid('vehicleNumber')" [innerText]="getErrorMessage('vehicleNumber')"></span>
+      </div>
+
+      <!-- Available Seats -->
+      <div class="form-group">
+        <label class="form-label">
+          <span [innerText]="'Available Seats'"></span>
+          <span class="required">*</span>
+        </label>
+        <div class="seats-selector">
+          <button type="button" class="seat-btn" *ngFor="let seat of toalSeats" [class.selected]="addRideForm.get('availableSeats')?.value === seat"
+            (click)="selectSeats(seat)" [innerText]="seat">
+          </button>
+        </div>
+        <span class="error-message" *ngIf="isFieldInvalid('availableSeats')" [innerText]="getErrorMessage('availableSeats')"></span>
+      </div>
+
+      <!-- Departure Time -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="material-icons">schedule</span>
+          <span [innerText]="'Departure Time'"></span>
+          <span class="required">*</span>
+        </label>
+        <div class="time-picker-wrapper">
+          <div class="timepicker-input">
+            <input type="time" class="form-input" placeholder="Select time" formControlName="departureTime" id="appt" name="appt" [class.input-error]="isFieldInvalid('departureTime')">
+            <span class="time-help" [innerText]="'Please click on the clock icon to open time picker'"></span>
+          </div>
+        </div>
+        <span class="error-message" *ngIf="isFieldInvalid('departureTime')" [innerText]="getErrorMessage('departureTime')"></span>
+      </div>
+
+      <!-- Pick-up Point -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="material-icons">location_on</span>
+          <span [innerText]="'Pick-up Point'"></span>
+          <span class="required">*</span>
+        </label>
+        <select class="form-input" formControlName="pickupPoint" [class.input-error]="isFieldInvalid('pickupPoint')">
+          <option value="">Select location</option>
+          <option *ngFor="let point of pickupPoints" [value]="point" [innerText]="point"></option>
+        </select>
+        <span class="error-message" *ngIf="isFieldInvalid('pickupPoint')" [innerText]="getErrorMessage('pickupPoint')"></span>
+      </div>
+
+      <!-- Destination -->
+      <div class="form-group">
+        <label class="form-label">
+          <span class="material-icons">location_on</span>
+          <span [innerText]="'Destination'"></span>
+          <span class="required">*</span>
+        </label>
+        <select class="form-input" formControlName="destination" [class.input-error]="isFieldInvalid('destination')">
+          <option value="">Select destination</option>
+          <option *ngFor="let dest of destinations" [value]="dest" [innerText]="dest"></option>
+        </select>
+        <span class="error-message" *ngIf="isFieldInvalid('destination')" [innerText]="getErrorMessage('destination')"></span>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" (click)="onClose()" [innerText]="'Cancel'">
+        </button>
+        <button type="submit" class="btn btn-primary" [disabled]="addRideForm.invalid" [innerText]="'Offer Ride'">
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

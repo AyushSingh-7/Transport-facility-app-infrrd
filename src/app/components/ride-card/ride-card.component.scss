@@ -1,0 +1,166 @@
+// Color Palette
+$primary-color: #4db8a8;
+$light-bg: #f0f8f6;
+$text-dark: #333333;
+$text-light: #999999;
+$white: #ffffff;
+$border-color: #e8e8e8;
+$light-cyan: #d4f1ed;
+.ride-card {
+  background: $white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.ride-icon {
+  width: 80px;
+  height: 80px;
+  background: $light-cyan;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  .material-icons {
+    font-size: 48px !important;
+    color: $primary-color;
+    &.icon-car {
+      color: $primary-color;
+    }
+    &.icon-bike {
+      color: $primary-color;
+    }
+  }
+}
+
+.ride-route {
+  font-size: 18px;
+  font-weight: 400;
+  color: $text-dark;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.3px;
+}
+
+.ride-description {
+  font-size: 13px;
+  color: $text-light;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ride-time {
+  font-size: 16px;
+  font-weight: 700;
+  color: $text-dark;
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.availability-dots {
+  display: flex;
+  gap: 6px;
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $border-color;
+    transition: all 0.3s ease;
+    &.available {
+      background: $primary-color;
+    }
+  }
+}
+
+.ride-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: $text-light;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $border-color;
+}
+
+.ride-vehicle {
+  font-weight: 600;
+  color: $text-dark;
+}
+
+.ride-by {
+  font-size: 12px;
+}
+
+// Available Seats Section
+.seats-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.seats-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.seats-icon {
+  color: $primary-color;
+  font-size: 20px !important;
+}
+
+.seats-count {
+  color: $text-dark;
+  &.fully-booked {
+    color: #dc3545;
+    font-weight: 700;
+  }
+}
+
+.book-ride-button {
+  padding: 12px 24px;
+  background: $primary-color;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  &:hover:not(:disabled) {
+    background: darken($primary-color, 8%);
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(77, 184, 168, 0.2);
+  }
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+  &:disabled {
+    background: #d3d3d3;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

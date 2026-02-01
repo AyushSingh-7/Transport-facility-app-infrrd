@@ -1,0 +1,382 @@
+// Color Palette
+$primary-color: #4db8a8;
+$light-bg: #f0f8f6;
+$text-dark: #333333;
+$text-light: #999999;
+$text-lighter: #cccccc;
+$white: #ffffff;
+$border-color: #e8e8e8;
+$light-cyan: #d4f1ed;
+$success-color: #4caf50;
+$info-color: #2196f3;
+.my-rides-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+.search-section {
+  background: $white;
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $text-dark;
+    margin: 0 0 12px 0;
+  }
+  .search-description {
+    font-size: 16px;
+    color: $text-light;
+    margin: 0 0 40px 0;
+  }
+}
+
+.search-box {
+  display: flex;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  .employee-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 1px solid $border-color;
+    border-radius: 12px;
+    font-size: 16px;
+    color: $text-dark;
+    transition: all 0.3s ease;
+    &::placeholder {
+      color: $text-lighter;
+    }
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba(77, 184, 168, 0.1);
+    }
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+  .view-btn {
+    padding: 14px 32px;
+    background: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background: darken($primary-color, 8%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(77, 184, 168, 0.3);
+    }
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.results-section {
+  animation: slideIn 0.3s ease;
+}
+
+.results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid $border-color;
+  h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: $text-dark;
+    margin: 0;
+  }
+  .employee-info {
+    font-size: 14px;
+    color: $text-light;
+    margin: 0;
+  }
+  .change-btn {
+    padding: 8px 16px;
+    background: transparent;
+    color: $primary-color;
+    border: 1px solid $primary-color;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background: $light-cyan;
+      border-color: $primary-color;
+    }
+  }
+}
+
+.rides-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.my-ride-card {
+  display: flex;
+  gap: 20px;
+  background: $white;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid $border-color;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  &:hover {
+    border-color: $primary-color;
+    box-shadow: 0 4px 16px rgba(77, 184, 168, 0.1);
+  }
+  .ride-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: $light-bg;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .material-icons {
+      font-size: 32px;
+      color: $primary-color;
+      &.icon-car {
+        color: $primary-color;
+      }
+      &.icon-bike {
+        color: $primary-color;
+      }
+    }
+  }
+  .ride-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .ride-route {
+      font-size: 18px;
+      font-weight: 400;
+      color: $text-dark;
+      margin: 0 0 12px 0;
+    }
+    .ride-info {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      span {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 14px;
+        color: $text-light;
+        .material-icons {
+          font-size: 18px;
+          color: $primary-color;
+        }
+      }
+    }
+    .ride-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      .booked-by {
+        font-size: 14px;
+        color: $text-light;
+        .badge {
+          background: $light-cyan;
+          color: $primary-color;
+          padding: 4px 10px;
+          border-radius: 20px;
+          font-weight: 600;
+          font-size: 12px;
+        }
+      }
+      .ride-type {
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        &.type-offered {
+          background: rgba(76, 175, 80, 0.1);
+          color: $success-color;
+        }
+        &.type-booked {
+          background: rgba(33, 150, 243, 0.1);
+          color: $info-color;
+        }
+      }
+    }
+  }
+}
+
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  background: $white;
+  border-radius: 16px;
+  border: 2px dashed $border-color;
+  .material-icons {
+    font-size: 48px;
+    color: $text-lighter;
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 16px;
+    color: $text-light;
+    margin: 0;
+    strong {
+      color: $text-dark;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .my-rides-container {
+    padding: 24px 16px;
+  }
+  .search-section {
+    padding: 40px 24px;
+    h2 {
+      font-size: 24px;
+    }
+    .search-description {
+      font-size: 14px;
+    }
+  }
+  .search-box {
+    flex-direction: column;
+  }
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    h3 {
+      font-size: 22px;
+    }
+    .change-btn {
+      align-self: flex-end;
+    }
+  }
+  .my-ride-card {
+    flex-direction: column;
+    gap: 16px;
+    .ride-icon {
+      width: 50px;
+      height: 50px;
+      .material-icons {
+        font-size: 28px;
+      }
+    }
+    .ride-content {
+      .ride-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .ride-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .my-rides-container {
+    padding: 16px 12px;
+  }
+  .search-section {
+    padding: 32px 16px;
+    border-radius: 16px;
+    h2 {
+      font-size: 20px;
+    }
+    .search-description {
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+  }
+  .search-box {
+    gap: 8px;
+    .employee-input {
+      padding: 12px 16px;
+      font-size: 14px;
+    }
+    .view-btn {
+      padding: 12px 20px;
+      font-size: 14px;
+    }
+  }
+  .results-header {
+    margin-bottom: 20px;
+    h3 {
+      font-size: 18px;
+    }
+  }
+  .my-ride-card {
+    padding: 16px;
+    border-radius: 12px;
+    .ride-route {
+      font-size: 16px;
+    }
+    .ride-info {
+      span {
+        font-size: 13px;
+        .material-icons {
+          font-size: 16px;
+        }
+      }
+    }
+    .ride-footer {
+      .booked-by {
+        font-size: 12px;
+        .badge {
+          padding: 3px 8px;
+          font-size: 11px;
+        }
+      }
+      .ride-type {
+        padding: 4px 10px;
+        font-size: 11px;
+      }
+    }
+  }
+  .no-results {
+    padding: 40px 16px;
+    .material-icons {
+      font-size: 40px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+<div class="browse-container">
+  <!-- Filters Section -->
+  <div class="filters-section">
+    <!-- Vehicle Type Filter -->
+    <div class="filter-group vehicle-filter">
+      <label class="filter-label" [innerText]="'Vehicle Type'"></label>
+      <div class="filter-options">
+        <button class="filter-btn" [class.active]="selectedVehicleType === 'all'" (click)="filterByVehicle('all')" [innerText]="'All'">
+        </button>
+        <button class="filter-btn" [class.active]="selectedVehicleType === 'bike'" (click)="filterByVehicle('bike')" [innerText]="'Bike'">
+          <span class="material-icons">two_wheeler</span>
+        </button>
+        <button class="filter-btn" [class.active]="selectedVehicleType === 'car'" (click)="filterByVehicle('car')" [innerText]="'Car'">
+          <span class="material-icons">directions_car</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Time Range Filter -->
+    <div class="filter-group time-filter">
+      <label class="filter-label" [innerText]="'Schedule Time (±60 min buffer)'"></label>
+      <div class="time-input-group">
+        <input type="time" class="time-input" [(ngModel)]="scheduleTime" [min]="minScheduleTime" />
+        <button class="time-reset-btn" title="Clear schedule time" (click)="resetTimeFilter()">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Input -->
+    <div class="filter-group search-filter">
+      <label class="filter-label" [innerText]="'Search'"></label>
+      <div class="search-container">
+        <span class="material-icons search-icon">search</span>
+        <input type="text" class="search-input" placeholder="Search by location" [(ngModel)]="searchQuery" (input)="onSearch()" />
+      </div>
+    </div>
+
+    <!-- Apply Filters Button -->
+    <div class="filter-group">
+      <button class="apply-filters-btn" (click)="applyFilters()" [innerText]="'Apply Filters'">
+        <span class="material-icons">tune</span>
+      </button>
+    </div>
+
+    <!-- Reset Filters Button -->
+    <div class="filter-group">
+      <button class="reset-filters-btn" (click)="resetAllFilters()" [innerText]="'Reset'">
+        <span class="material-icons">restart_alt</span>
+      </button>
+    </div>
+
+    <!-- Rides Found Count -->
+    <!-- <div class="rides-found">
+      <span [innerText]="filteredRides.length + ' rides found'"></span>
+    </div> -->
+  </div>
+
+  <!-- Rides Grid or Empty State -->
+  <div *ngIf="filteredRides.length > 0; else noRides" class="rides-grid">
+    <app-ride-card *ngFor="let ride of filteredRides" [ride]="ride" (bookRideClicked)="bookRide($event)"></app-ride-card>
+  </div>
+
+  <ng-template #noRides>
+    <app-empty-rides-page (offerRide)="onOfferRide()"></app-empty-rides-page>
+  </ng-template>
+
+  <!-- Modal Overlay -->
+  <div *ngIf="showBookRideModal" class="modal-overlay-browse" (click)="closeBookRideModal()">
+    <!-- Book Ride Modal -->
+    <app-book-ride-modal *ngIf="selectedRideForBooking" [ride]="selectedRideForBooking" (close)="closeBookRideModal()" (bookingResult)="onBookingResult($event)">
+    </app-book-ride-modal>
+  </div>
+
+  <!-- Booking Result Modal -->
+  <app-booking-result-modal *ngIf="showBookingResultModal" [status]="bookingResultStatus" [message]="bookingResultMessage"
+    [rideDetails]="bookingResultRideDetails" (close)="closeBookingResultModal()">
+  </app-booking-result-modal>
+</div>

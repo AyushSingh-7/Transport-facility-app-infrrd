@@ -1,0 +1,269 @@
+// Color Palette
+$primary-color: #4db8a8;
+$success-color: #28a745;
+$failure-color: #dc3545;
+$white: #ffffff;
+$light-bg: #f0f8f6;
+$text-dark: #333333;
+$text-light: #999999;
+$border-color: #e8e8e8;
+// Overlay
+.booking-result-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+  &.show {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+// Modal Container
+.booking-result-modal {
+  background: $white;
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  &.show {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+// Icon Container with Animation
+.icon-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  animation: iconPulse 0.6s ease-out;
+  &.icon-success {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+    .icon {
+      color: $white;
+      font-size: 64px;
+      animation: checkMarkAnimation 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    }
+  }
+  &.icon-failure {
+    background: linear-gradient(135deg, #dc3545 0%, #ff6b6b 100%);
+    box-shadow: 0 10px 30px rgba(220, 53, 69, 0.3);
+    .icon {
+      color: $white;
+      font-size: 64px;
+      animation: crossAnimation 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+    }
+  }
+}
+
+// Icon Animations
+@keyframes iconPulse {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes checkMarkAnimation {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes crossAnimation {
+  0% {
+    transform: scale(0) rotate(45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+// Modal Title
+.modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: $text-dark;
+  margin: 0 0 12px 0;
+  animation: slideInDown 0.5s ease-out 0.3s both;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Modal Message
+.modal-message {
+  font-size: 15px;
+  color: $text-light;
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+  animation: fadeIn 0.5s ease-out 0.4s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Ride Details Box
+.ride-details-box {
+  background: $light-bg;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  border-left: 4px solid $primary-color;
+  text-align: left;
+  animation: slideUp 0.5s ease-out 0.45s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.detail-label {
+  color: $text-light;
+  font-weight: 500;
+}
+
+.detail-value {
+  color: $text-dark;
+  font-weight: 600;
+}
+
+// Close Button
+.close-btn {
+  width: 100%;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, $primary-color 0%, #3da89d 100%);
+  color: $white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: slideInUp 0.5s ease-out 0.5s both;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(77, 184, 168, 0.3);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive Design
+@media (max-width: 480px) {
+  .booking-result-modal {
+    padding: 36px 24px;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+  .icon-container {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    .icon {
+      font-size: 48px;
+    }
+  }
+  .modal-title {
+    font-size: 20px;
+  }
+  .modal-message {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .ride-details-box {
+    padding: 12px;
+    margin-bottom: 16px;
+  }
+  .close-btn {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+}

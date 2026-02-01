@@ -1,0 +1,40 @@
+<div class="ride-card">
+  <!-- Vehicle Icon -->
+  <div class="ride-icon">
+    <span class="material-icons" [ngClass]="'icon-' + ride.vehicleType">
+      {{ ride.vehicleType === 'bike' ? 'two_wheeler' : 'directions_car' }}
+    </span>
+  </div>
+
+  <!-- Ride Route -->
+  <h3 class="ride-route" [innerText]="ride.from + ' → ' + ride.to"></h3>
+  <p class="ride-description" [innerText]="ride.description"></p>
+
+  <!-- Departure Time -->
+  <div class="ride-time" [innerText]="ride.departureTime">
+    <div class="availability-dots">
+      <span class="dot" *ngFor="let seat of totalSeats" [class.available]="seat <= ride.availableSeats"></span>
+    </div>
+  </div>
+
+  <!-- Ride Details -->
+  <div class="ride-details">
+    <span class="ride-vehicle" [innerText]="ride.vehicleNumber"></span>
+    <span class="ride-by" [innerText]="'by ' + ride.offerBy"></span>
+  </div>
+
+  <!-- Available Seats Section -->
+  <div class="seats-section">
+    <div class="seats-info">
+      <span class="material-icons seats-icon">event_seat</span>
+      <span *ngIf="ride.availableSeats > 0" class="seats-count" [innerText]="ride.availableSeats + ' Seat' + (ride.availableSeats > 1 ? 's' : '') + ' Available'"></span>
+      <span *ngIf="ride.availableSeats === 0" class="seats-count fully-booked" [innerText]="'Fully Booked'"></span>
+    </div>
+  </div>
+
+  <!-- Book Ride Button -->
+  <button class="book-ride-button" [disabled]="ride.availableSeats === 0" (click)="onBookRideClick()">
+    <span *ngIf="ride.availableSeats > 0" [innerText]="'Book ride'"></span>
+    <span *ngIf="ride.availableSeats === 0" [innerText]="'Fully Booked'"></span>
+  </button>
+</div>

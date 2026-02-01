@@ -1,0 +1,61 @@
+<div class="homepage-container">
+  <div class="homepage-content-wrapper">
+    <div class="svg-container svg-left">
+      <img src="assets/car-svgrepo-com.svg" alt="Car" class="svg-image">
+    </div>
+    <div class="center-content">
+      <div class="header-section">
+        <div class="icon-container">
+          <span class="material-icons icon-large direction-car" (click)="onBookRide()" [title]="'home'">directions_car</span>
+        </div>
+        <h1 class="main-title" [innerText]="'Ride in Sync'"></h1>
+        <p class="subtitle" [innerText]="'Share your commute, connect with colleagues'"></p>
+      </div>
+      <!-- Stats Section -->
+      <div class="stats-section">
+        <!-- Available Rides Stat -->
+        <div class="stat-card">
+          <div class="stat-icon-container">
+            <span class="material-icons stat-icon location-icon">location_on</span>
+          </div>
+          <p class="stat-number" [innerText]="availableRidesCount"></p>
+          <p class="stat-label" [innerText]="'Rides available'"></p>
+        </div>
+        <!-- Today Rides Stat -->
+        <div class="stat-card">
+          <div class="stat-icon-container">
+            <span class="material-icons stat-icon user-icon">calendar_today</span>
+          </div>
+          <p class="stat-number" [innerText]="'Today'"></p>
+          <p class="stat-label" [innerText]="current_date"></p>
+        </div>
+      </div>
+      <!-- Navigation Buttons -->
+      <div class="navigation-section">
+        <button class="nav-button browse-btn" [class.active]="activeButton === 'book_ride'" (click)="onBookRide()" [innerText]="'Book Ride'">
+        </button>
+        <button class="nav-button offer-btn" [class.active]="activeButton === 'offer'" (click)="onOfferRide()" [innerText]="'Offer Ride'">
+          <span class="material-icons">add</span>
+        </button>
+        <button class="nav-button rides-btn" [class.active]="activeButton === 'myRides'" (click)="onMyRides()" [innerText]="'My Rides'">
+        </button>
+      </div>
+    </div>
+    <div class="svg-container svg-right">
+      <img src="assets/motorcycle-svgrepo-com.svg" alt="Bike" class="svg-image">
+    </div>
+  </div>
+  <!-- Plus Button for Offering a Ride -->
+  <button class="plus-button" (click)="onOfferRide()" title="Offer a Ride">
+    <span class="material-icons">add</span>
+  </button>
+  <div class="secondary-action-container">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- Add Ride Modal -->
+  <div class="modal-overlay" *ngIf="showAddRideModal" (click)="closeAddRideModal()">
+    <div class="modal-overlay-inside">
+      <app-add-ride-modal (close)="closeAddRideModal()" (submit)="onAddRideSubmit($event)"></app-add-ride-modal>
+    </div>
+  </div>
+</div>

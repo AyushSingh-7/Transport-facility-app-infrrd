@@ -1,0 +1,68 @@
+<div class="my-rides-container">
+  <!-- Search Section -->
+  <div class="search-section">
+    <h2 [innerHTML]="'Enter Your Employee ID'"></h2>
+    <p class="search-description" [innerHTML]="'To view your offered and booked rides'"></p>
+
+    <div class="search-box">
+      <input type="text" class="employee-input" placeholder="EMP001" [(ngModel)]="employeeId" (keyup.enter)="searchByEmployeeId()"
+      />
+      <button class="view-btn" (click)="searchByEmployeeId()" []>View</button>
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div *ngIf="searchedEmployeeId && myRides.length > 0" class="results-section">
+    <div class="results-header">
+      <h3 [innerHTML]="'My Rides'"></h3>
+      <p class="employee-info" [innerText]="'Employee: ' + searchedEmployeeId"></p>
+      <button class="change-btn" (click)="changeEmployeeId()" [innerHTML]="'Change'"></button>
+    </div>
+
+    <!-- Rides Cards -->
+    <div class="rides-container">
+      <div class="my-ride-card" *ngFor="let ride of myRides">
+        <!-- Vehicle Icon -->
+        <div class="ride-icon">
+          <span class="material-icons" [ngClass]="'icon-' + ride.vehicleType">
+            {{ ride.vehicleType === 'bike' ? 'two_wheeler' : 'directions_car' }}
+          </span>
+        </div>
+
+        <!-- Ride Details -->
+        <div class="ride-content">
+          <h4 class="ride-route" [innerText]="ride.from + ' → ' + ride.to"></h4>
+
+          <div class="ride-info">
+            <span class="ride-time">
+              <span class="material-icons">schedule</span>
+              <span [innerText]="ride.departureTime"></span>
+            </span>
+            <span *ngIf="ride.type === 'booked'" class="ride-seats">
+              <span class="material-icons">person</span>
+              <span [innerText]="getAvailableSeatsCount(ride) + '/' + ride.availableSeats + ' seats'"></span>
+            </span>
+            <span class="ride-number" [innerText]="ride.vehicleNumber ||'-'"></span>
+          </div>
+
+          <div class="ride-footer">
+            <span class="ride-type" [class.type-offered]="ride.type === 'offered'" [class.type-booked]="ride.type === 'booked'" [innerText]="getRideTypeLabel(ride)"></span>
+            <span *ngIf="ride.type === 'booked'">
+              <span class="booked-by" [innerHTML]="'Offered by:'">
+                <span class="badge" [innerText]="ride.offerBy"></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- No Results Message -->
+  <div *ngIf="showNoResults" class="no-results">
+    <span class="material-icons">info</span>
+    <p [innerHTML]="'No rides found for employee ID:'">
+      <strong [innerText]="searchedEmployeeId"></strong>
+    </p>
+  </div>
+</div>
