@@ -334,7 +334,7 @@ $light-pink: #f0e8f0;
     padding: 30px 16px;
   }
   .homepage-content-wrapper {
-    display: contents;
+    display: contents !important;
     gap: 20px;
     margin-bottom: 40px;
   }

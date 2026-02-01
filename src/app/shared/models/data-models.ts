@@ -32,6 +32,7 @@ export interface RideItem {
   time: string;
   pickupPoint: string;
   destination: string;
+  vehicleNumber: string;
 }
 
 export interface Booking {
@@ -61,6 +62,7 @@ export interface RideData {
   departureTime: string;
   availableSeats: number;
   offerBy: string;
+  vehicleNumber?: string;
 }
 
 export interface BookRideFormData {

@@ -112,6 +112,7 @@ export class HomepageComponent implements OnInit {
       employeeId: formData.employeeId,
       vehicleType: formData.vehicleType as 'bike' | 'car',
       vehicleNo: formData.vehicleNumber,
+      vehicleNumber: formData.vehicleNumber,
       vacantSeats: formData.availableSeats,
       time: timeString,
       pickupPoint: formData.pickupPoint,
