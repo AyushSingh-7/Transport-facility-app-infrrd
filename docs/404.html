@@ -1,14 +1,20 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>TransportFacility</title>
-  <base href="/Transport-facility-app-infrrd/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="assets/car-svgrepo-com.svg">
-<link rel="stylesheet" href="styles.de2d3353b2958063.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.de2d3353b2958063.css"></noscript></head>
+<!DOCTYPE html>
+<html>
 
-<body>
-  <app-root></app-root>
-<script src="runtime.86f90d1257445350.js" type="module"></script><script src="polyfills.7bfb869d5cb7d0b6.js" type="module"></script><script src="main.89611955cc0993c6.js" type="module"></script>
+<head>
+  <title>Transport Facility</title>
+  <script>
+    var pathSegmentsToKeep = 1;
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?p=' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&q=' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
 
+  </script>
+</head>
 
-</body></html>
+</html>
