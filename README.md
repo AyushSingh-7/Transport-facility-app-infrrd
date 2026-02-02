@@ -12,9 +12,6 @@ A modern ride-sharing web application built with Angular that allows employees t
 - [Demo Video](#demo-video)
 - [Features](#features)
 - [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [System Design (HLD)](#system-design-hld)
-- [Project Structure](#project-structure)
 - [How It Works](#how-it-works)
 - [Setup & Installation](#setup--installation)
 - [Scope of Improvement](#scope-of-improvement)
@@ -84,7 +81,7 @@ https://github.com/user-attachments/assets/1f3d168d-3750-479a-87f9-f1473ec71f15
 
 ## 🛠 Tech Stack
 
-### Framework & Libraries....NO CSS LIBRARY USED as mentioned in problem statement
+### Framework....NO CSS LIBRARY USED as mentioned in problem statement
 
 | Technology     | Version | Purpose                    |
 | -------------- | ------- | -------------------------- |
