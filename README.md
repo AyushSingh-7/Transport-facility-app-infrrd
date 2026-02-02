@@ -1,6 +1,6 @@
 # 🚗 Transport Facility App
 
-A modern ride-sharing application built with Angular that allows employees to offer and book rides within an organization.
+A modern ride-sharing web application built with Angular that allows employees to offer and book rides within an organization.
 
 **🔗 Live Demo:** [https://ayushsingh-7.github.io/Transport-facility-app-infrrd/](https://ayushsingh-7.github.io/Transport-facility-app-infrrd/)
 
